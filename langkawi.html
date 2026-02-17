@@ -60,6 +60,7 @@
       .gallery img { height: 180px; }
     }
 
+    /* Lightbox */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -69,7 +70,6 @@
       padding: 14px;
       z-index: 9999;
     }
-
     .lightbox.open { display: grid; }
 
     .lightbox img {
@@ -79,6 +79,7 @@
       border: 1px solid rgba(255,255,255,0.18);
       box-shadow: 0 20px 60px rgba(0,0,0,0.55);
       cursor: zoom-out;
+      background: rgba(255,255,255,0.04);
     }
 
     .lb-close {
@@ -109,57 +110,93 @@
 
   <div class="gallery" id="gallery">
 
-    <img src="images/langkawi/20260115_122225_result.jpg">
-    <img src="images/langkawi/20260115_175831_result.jpg">
-    <img src="images/langkawi/20260115_192631_result.jpg">
-    <img src="images/langkawi/20260115_225149_result.jpg">
+    <img src="images/langkawi/20260115_122225_result.jpg" alt="">
+    <img src="images/langkawi/20260115_175831_result.jpg" alt="">
+    <img src="images/langkawi/20260115_192631_result.jpg" alt="">
+    <img src="images/langkawi/20260115_225149_result.jpg" alt="">
 
-    <img src="images/langkawi/20260116_111013_result.jpg">
-    <img src="images/langkawi/20260116_145344_result.jpg">
-    <img src="images/langkawi/20260116_145540_result.jpg">
-    <img src="images/langkawi/20260116_145650_result.jpg">
-    <img src="images/langkawi/20260116_145752_result.jpg">
-    <img src="images/langkawi/20260116_151041_result.jpg">
-    <img src="images/langkawi/20260116_151153_result.jpg">
-    <img src="images/langkawi/20260116_151822_result.jpg">
-    <img src="images/langkawi/20260116_151932_result.jpg">
-    <img src="images/langkawi/20260116_152111_result.jpg">
-    <img src="images/langkawi/20260116_152132_result.jpg">
-    <img src="images/langkawi/20260116_165829_result.jpg">
-    <img src="images/langkawi/20260116_170322_result.jpg">
-    <img src="images/langkawi/20260116_170627_result.jpg">
-    <img src="images/langkawi/20260116_181351_result.jpg">
-    <img src="images/langkawi/20260116_203928_result.jpg">
-    <img src="images/langkawi/20260116_211005_result.jpg">
-    <img src="images/langkawi/20260116_211112_result.jpg">
-    <img src="images/langkawi/20260116_211629_result.jpg">
+    <img src="images/langkawi/20260116_111013_result.jpg" alt="">
+    <img src="images/langkawi/20260116_145344_result.jpg" alt="">
+    <img src="images/langkawi/20260116_145540_result.jpg" alt="">
+    <img src="images/langkawi/20260116_145650_result.jpg" alt="">
+    <img src="images/langkawi/20260116_145752_result.jpg" alt="">
+    <img src="images/langkawi/20260116_151041_result.jpg" alt="">
+    <img src="images/langkawi/20260116_151153_result.jpg" alt="">
+    <img src="images/langkawi/20260116_151822_result.jpg" alt="">
+    <img src="images/langkawi/20260116_151932_result.jpg" alt="">
+    <img src="images/langkawi/20260116_152111_result.jpg" alt="">
+    <img src="images/langkawi/20260116_152132_result.jpg" alt="">
+    <img src="images/langkawi/20260116_165829_result.jpg" alt="">
+    <img src="images/langkawi/20260116_170322_result.jpg" alt="">
+    <img src="images/langkawi/20260116_170627_result.jpg" alt="">
+    <img src="images/langkawi/20260116_181351_result.jpg" alt="">
+    <img src="images/langkawi/20260116_203928_result.jpg" alt="">
+    <img src="images/langkawi/20260116_211005_result.jpg" alt="">
+    <img src="images/langkawi/20260116_211112_result.jpg" alt="">
+    <img src="images/langkawi/20260116_211629_result.jpg" alt="">
 
-    <img src="images/langkawi/20260117_133117_result.jpg">
-    <img src="images/langkawi/20260117_190437_result.jpg">
-    <img src="images/langkawi/20260117_192218_result.jpg">
-    <img src="images/langkawi/20260117_192604_result.jpg">
-    <img src="images/langkawi/20260117_193641_result.jpg">
-    <img src="images/langkawi/20260117_194554_result.jpg">
-    <img src="images/langkawi/20260117_194823_result.jpg">
-    <img src="images/langkawi/20260117_195031_result.jpg">
-    <img src="images/langkawi/20260117_195210_result.jpg">
-    <img src="images/langkawi/20260117_195220(0)_result.jpg">
-    <img src="images/langkawi/20260117_195413_result.jpg">
-    <img src="images/langkawi/20260117_195513_result.jpg">
-    <img src="images/langkawi/20260117_195829_result.jpg">
-    <img src="images/langkawi/20260117_204043_result.jpg">
-    <img src="images/langkawi/20260117_215814_result.jpg">
-    <img src="images/langkawi/20260117_215836_result.jpg">
-    <img src="images/langkawi/20260117_222841_result.jpg">
-    <img src="images/langkawi/20260117_222856_result.jpg">
-    <img src="images/langkawi/20260117_223517_result.jpg">
-    <img src="images/langkawi/20260117_231426_result.jpg">
+    <img src="images/langkawi/20260117_133117_result.jpg" alt="">
+    <img src="images/langkawi/20260117_190437_result.jpg" alt="">
+    <img src="images/langkawi/20260117_192218_result.jpg" alt="">
+    <img src="images/langkawi/20260117_192604_result.jpg" alt="">
+    <img src="images/langkawi/20260117_193641_result.jpg" alt="">
+    <img src="images/langkawi/20260117_194554_result.jpg" alt="">
+    <img src="images/langkawi/20260117_194823_result.jpg" alt="">
+    <img src="images/langkawi/20260117_195031_result.jpg" alt="">
+    <img src="images/langkawi/20260117_195210_result.jpg" alt="">
+    <img src="images/langkawi/20260117_195220(0)_result.jpg" alt="">
+    <img src="images/langkawi/20260117_195413_result.jpg" alt="">
+    <img src="images/langkawi/20260117_195513_result.jpg" alt="">
+    <img src="images/langkawi/20260117_195829_result.jpg" alt="">
+    <img src="images/langkawi/20260117_204043_result.jpg" alt="">
+    <img src="images/langkawi/20260117_215814_result.jpg" alt="">
+    <img src="images/langkawi/20260117_215836_result.jpg" alt="">
+    <img src="images/langkawi/20260117_222841_result.jpg" alt="">
+    <img src="images/langkawi/20260117_222856_result.jpg" alt="">
+    <img src="images/langkawi/20260117_223517_result.jpg" alt="">
+    <img src="images/langkawi/20260117_231426_result.jpg" alt="">
+
+    <img src="images/langkawi/20260118_101702_result.jpg" alt="">
+    <img src="images/langkawi/20260118_153114_result.jpg" alt="">
+    <img src="images/langkawi/20260118_153119_result.jpg" alt="">
+    <img src="images/langkawi/20260118_153312_result.jpg" alt="">
+    <img src="images/langkawi/20260118_153554_result.jpg" alt="">
+    <img src="images/langkawi/20260118_153640_result.jpg" alt="">
+    <img src="images/langkawi/20260118_153653_result.jpg" alt="">
+    <img src="images/langkawi/20260118_153906_result.jpg" alt="">
+    <img src="images/langkawi/20260118_162227_result.jpg" alt="">
+    <img src="images/langkawi/20260118_162302_result.jpg" alt="">
+    <img src="images/langkawi/20260118_171323_result.jpg" alt="">
+    <img src="images/langkawi/20260118_171342_result.jpg" alt="">
+    <img src="images/langkawi/20260118_191710_result.jpg" alt="">
+    <img src="images/langkawi/20260118_191811_result.jpg" alt="">
+    <img src="images/langkawi/20260118_192008_result.jpg" alt="">
+    <img src="images/langkawi/20260118_192119_result.jpg" alt="">
+    <img src="images/langkawi/20260118_192154_result.jpg" alt="">
+    <img src="images/langkawi/20260118_192419_result.jpg" alt="">
+    <img src="images/langkawi/20260118_193407_result.jpg" alt="">
+    <img src="images/langkawi/20260118_193826_result.jpg" alt="">
+    <img src="images/langkawi/20260118_194221_result.jpg" alt="">
+    <img src="images/langkawi/20260118_194432_result.jpg" alt="">
+    <img src="images/langkawi/20260118_194654_result.jpg" alt="">
+    <img src="images/langkawi/20260118_194751_result.jpg" alt="">
+    <img src="images/langkawi/20260118_194801_result.jpg" alt="">
+    <img src="images/langkawi/20260118_215303_result.jpg" alt="">
+    <img src="images/langkawi/20260118_215309_result.jpg" alt="">
+    <img src="images/langkawi/20260118_220229_result.jpg" alt="">
+
+    <img src="images/langkawi/20260119_000513_result.jpg" alt="">
+    <img src="images/langkawi/20260119_081518_result.jpg" alt="">
+    <img src="images/langkawi/20260119_102840_result.jpg" alt="">
+    <img src="images/langkawi/20260119_102852_result.jpg" alt="">
+    <img src="images/langkawi/20260119_104823_result.jpg" alt="">
 
   </div>
 
-  <div class="lightbox" id="lightbox">
-    <button class="lb-close" id="lbClose">✕</button>
-    <img id="lbImg">
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Închide">✕</button>
+    <img id="lbImg" alt="">
   </div>
 
   <script>
@@ -168,21 +205,32 @@
     const lbImg = document.getElementById('lbImg');
     const lbClose = document.getElementById('lbClose');
 
+    function openLb(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLb() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+    }
+
     gallery.addEventListener('click', (e) => {
       const img = e.target.closest('img');
       if (!img) return;
-      lbImg.src = img.src;
-      lightbox.classList.add('open');
+      openLb(img.src, img.alt);
     });
 
-    lbClose.addEventListener('click', () => lightbox.classList.remove('open'));
-
+    lbClose.addEventListener('click', closeLb);
     lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) lightbox.classList.remove('open');
+      if (e.target === lightbox) closeLb();
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') lightbox.classList.remove('open');
+      if (e.key === 'Escape') closeLb();
     });
   </script>
 
