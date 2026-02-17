@@ -5,72 +5,96 @@
   <title>Langkawi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
   <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b1020;
-    color: white;
-    text-align: center;
-  }
-
-  h1 {
-    padding: 30px 0 10px;
-    margin: 0;
-  }
-
-  .nav {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 0 10px;
-    padding: 0 12px;
-  }
-
-  .nav a {
-    display: inline-block;
-    padding: 10px 16px;
-    background: #1a2b6a;
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 16px;
-  }
-
-  .nav a:hover {
-    background: #2d44a3;
-  }
-
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
-    padding: 20px;
-  }
-
-  .gallery img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.2s ease;
-    -webkit-touch-callout: none; /* mai curat pe iPhone */
-  }
-
-  .gallery img:hover {
-    transform: scale(1.03);
-  }
-
-  /* Ajustare pentru telefoane mici */
-  @media (max-width: 520px) {
-    .gallery img {
-      height: 180px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      text-align: center;
     }
-  }
-</style>
 
+    h1 { padding: 30px 0 10px; margin: 0; }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0 0 10px;
+      padding: 0 12px;
+    }
+
+    .nav a {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #1a2b6a;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .nav a:hover { background: #2d44a3; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+      -webkit-touch-callout: none;
+      cursor: zoom-in;
+    }
+
+    .gallery img:hover { transform: scale(1.03); }
+
+    @media (max-width: 520px) {
+      .gallery img { height: 180px; }
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,0.78);
+      padding: 14px;
+      z-index: 9999;
+    }
+
+    .lightbox.open { display: grid; }
+
+    .lightbox img {
+      max-width: min(1100px, 96vw);
+      max-height: 88vh;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+      cursor: zoom-out;
+    }
+
+    .lb-close {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(20,20,30,0.65);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
@@ -83,7 +107,8 @@
     <a href="kuala-lumpur.html">Kuala Lumpur</a>
   </div>
 
-  <div class="gallery">
+  <div class="gallery" id="gallery">
+
     <img src="images/langkawi/20260115_122225_result.jpg">
     <img src="images/langkawi/20260115_175831_result.jpg">
     <img src="images/langkawi/20260115_192631_result.jpg">
@@ -130,41 +155,36 @@
     <img src="images/langkawi/20260117_223517_result.jpg">
     <img src="images/langkawi/20260117_231426_result.jpg">
 
-    <img src="images/langkawi/20260118_101702_result.jpg">
-    <img src="images/langkawi/20260118_153114_result.jpg">
-    <img src="images/langkawi/20260118_153119_result.jpg">
-    <img src="images/langkawi/20260118_153312_result.jpg">
-    <img src="images/langkawi/20260118_153554_result.jpg">
-    <img src="images/langkawi/20260118_153640_result.jpg">
-    <img src="images/langkawi/20260118_153653_result.jpg">
-    <img src="images/langkawi/20260118_153906_result.jpg">
-    <img src="images/langkawi/20260118_162227_result.jpg">
-    <img src="images/langkawi/20260118_162302_result.jpg">
-    <img src="images/langkawi/20260118_171323_result.jpg">
-    <img src="images/langkawi/20260118_171342_result.jpg">
-    <img src="images/langkawi/20260118_191710_result.jpg">
-    <img src="images/langkawi/20260118_191811_result.jpg">
-    <img src="images/langkawi/20260118_192008_result.jpg">
-    <img src="images/langkawi/20260118_192119_result.jpg">
-    <img src="images/langkawi/20260118_192154_result.jpg">
-    <img src="images/langkawi/20260118_192419_result.jpg">
-    <img src="images/langkawi/20260118_193407_result.jpg">
-    <img src="images/langkawi/20260118_193826_result.jpg">
-    <img src="images/langkawi/20260118_194221_result.jpg">
-    <img src="images/langkawi/20260118_194432_result.jpg">
-    <img src="images/langkawi/20260118_194654_result.jpg">
-    <img src="images/langkawi/20260118_194751_result.jpg">
-    <img src="images/langkawi/20260118_194801_result.jpg">
-    <img src="images/langkawi/20260118_215303_result.jpg">
-    <img src="images/langkawi/20260118_215309_result.jpg">
-    <img src="images/langkawi/20260118_220229_result.jpg">
-
-    <img src="images/langkawi/20260119_000513_result.jpg">
-    <img src="images/langkawi/20260119_081518_result.jpg">
-    <img src="images/langkawi/20260119_102840_result.jpg">
-    <img src="images/langkawi/20260119_102852_result.jpg">
-    <img src="images/langkawi/20260119_104823_result.jpg">
   </div>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose">✕</button>
+    <img id="lbImg">
+  </div>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    gallery.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+      lbImg.src = img.src;
+      lightbox.classList.add('open');
+    });
+
+    lbClose.addEventListener('click', () => lightbox.classList.remove('open'));
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('open');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
+  </script>
 
 </body>
 </html>
