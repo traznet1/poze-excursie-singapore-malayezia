@@ -1,114 +1,73 @@
-<!doctype html>
-<html lang="ro">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Excursie Singapore • Langkawi • Kuala Lumpur</title>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map', { scrollWheelZoom: false }).setView([3.2, 102.3], 6);
 
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
 
-  <style>
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background:#0b1020;
-      color:#fff;
-      text-align:center;
-    }
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
-    h1{margin:10px 0 6px;font-size: clamp(26px, 4vw, 44px)}
-    .sub{margin:0 0 14px;color:#a8b0c7}
-
-    .nav{
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin: 14px 0 18px;
-      padding: 0 12px;
-    }
-    .nav a{
-      display:inline-block;
-      padding:10px 16px;
-      background:#1a2b6a;
-      color:#fff;
-      text-decoration:none;
-      border-radius:10px;
-      font-size:16px;
-    }
-    .nav a:hover{background:#2d44a3}
-
-    .card{
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-      text-align:left;
-    }
-
-    #map{
-      height: 420px;
-      border-radius: 14px;
-      overflow:hidden;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 520px){
-      #map{height: 340px;}
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <h1>Excursie Singapore • Langkawi • Kuala Lumpur</h1>
-    <p class="sub">Galerii foto + hartă cu locurile principale</p>
-
-    <div class="nav">
-      <a href="singapore.html">Singapore</a>
-      <a href="langkawi.html">Langkawi</a>
-      <a href="kuala-lumpur.html">Kuala Lumpur</a>
-    </div>
-
-    <div class="card">
-      <strong>Hartă</strong>
-      <div id="map"></div>
-      <p class="sub" style="margin-top:10px;">
-        Tip: apasă pe markere pentru detalii și link către galerie.
-      </p>
-    </div>
-  </div>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    // Centru aproximativ între cele 3 zone
-    const map = L.map('map', { scrollWheelZoom: false }).setView([3.2, 102.3], 6);
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap'
-    }).addTo(map);
-
-    const places = [
-      // Singapore
-      { name: "Marina Bay Sands", lat: 1.2834, lon: 103.8607, page: "singapore.html" },
-      { name: "Gardens by the Bay", lat: 1.2816, lon: 103.8636, page: "singapore.html" },
-      { name: "Sentosa", lat: 1.2494, lon: 103.8303, page: "singapore.html" },
-
-      // Langkawi
-      { name: "Pantai Cenang", lat: 6.2939, lon: 99.7319, page: "langkawi.html" },
-      { name: "Langkawi Sky Bridge", lat: 6.3816, lon: 99.6716, page: "langkawi.html" },
-
-      // Kuala Lumpur
-      { name: "Petronas Towers", lat: 3.1579, lon: 101.7123, page: "kuala-lumpur.html" },
-      { name: "Batu Caves", lat: 3.2379, lon: 101.6840, page: "kuala-lumpur.html" },
-    ];
-
-    places.forEach(p => {
-      const html = `<strong>${p.name}</strong><br><a href="${p.page}">Deschide galeria</a>`;
-      L.marker([p.lat, p.lon]).addTo(map).bindPopup(html);
+  // Iconițe colorate (fără fișiere externe)
+  function pin(color) {
+    return L.divIcon({
+      className: '',
+      iconSize: [18, 18],
+      html: `<div style="
+        width:18px;height:18px;border-radius:50%;
+        background:${color};
+        border:2px solid rgba(255,255,255,.9);
+        box-shadow:0 6px 16px rgba(0,0,0,.45);
+      "></div>`
     });
-  </script>
-</body>
-</html>
+  }
+
+  const ICON_SG = pin('#00d0ff');
+  const ICON_LK = pin('#00e676');
+  const ICON_KL = pin('#ffb300');
+
+  const places = [
+    // Singapore
+    { group: "Singapore", name: "Marina Bay Sands", lat: 1.2834, lon: 103.8607, page: "singapore.html", icon: ICON_SG },
+    { group: "Singapore", name: "Gardens by the Bay", lat: 1.2816, lon: 103.8636, page: "singapore.html", icon: ICON_SG },
+   
+
+    // Langkawi
+    { group: "Langkawi", name: "Pantai Cenang", lat: 6.2939, lon: 99.7319, page: "langkawi.html", icon: ICON_LK },
+    { group: "Langkawi", name: "Langkawi Sky Bridge", lat: 6.3816, lon: 99.6716, page: "langkawi.html", icon: ICON_LK },
+
+    // Kuala Lumpur
+    { group: "Kuala Lumpur", name: "Petronas Towers", lat: 3.1579, lon: 101.7123, page: "kuala-lumpur.html", icon: ICON_KL },
+    
+  ];
+
+  const groupBounds = {
+    "Singapore": L.latLngBounds(),
+    "Langkawi": L.latLngBounds(),
+    "Kuala Lumpur": L.latLngBounds()
+  };
+
+  places.forEach(p => {
+    const html = `<strong>${p.name}</strong><br><a href="${p.page}">Deschide galeria</a>`;
+    L.marker([p.lat, p.lon], { icon: p.icon }).addTo(map).bindPopup(html);
+    groupBounds[p.group].extend([p.lat, p.lon]);
+  });
+
+  // Zoom către un grup (folosit de butoanele de sus)
+  function zoomTo(groupName){
+    const b = groupBounds[groupName];
+    if (!b || !b.isValid()) return;
+    map.fitBounds(b.pad(0.4));
+  }
+
+  // Adaugă comportament: când apeși pe linkurile din meniu, harta se duce la zona aceea
+  // (fără să schimbe pagina dacă ții Ctrl/click etc.)
+  const links = document.querySelectorAll('.nav a');
+  links.forEach(a => {
+    const text = a.textContent.trim();
+    a.addEventListener('mouseenter', () => {
+      if (text === 'Singapore') zoomTo('Singapore');
+      if (text === 'Langkawi') zoomTo('Langkawi');
+      if (text === 'Kuala Lumpur') zoomTo('Kuala Lumpur');
+    }, { passive: true });
+  });
+</script>
