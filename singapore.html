@@ -6,70 +6,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b1020;
-    color: white;
-    text-align: center;
-  }
-
-  h1 {
-    padding: 30px 0 10px;
-    margin: 0;
-  }
-
-  .nav {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 0 10px;
-    padding: 0 12px;
-  }
-
-  .nav a {
-    display: inline-block;
-    padding: 10px 16px;
-    background: #1a2b6a;
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 16px;
-  }
-
-  .nav a:hover {
-    background: #2d44a3;
-  }
-
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
-    padding: 20px;
-  }
-
-  .gallery img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.2s ease;
-    -webkit-touch-callout: none; /* mai curat pe iPhone */
-  }
-
-  .gallery img:hover {
-    transform: scale(1.03);
-  }
-
-  /* Ajustare pentru telefoane mici */
-  @media (max-width: 520px) {
-    .gallery img {
-      height: 180px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      text-align: center;
     }
-  }
-</style>
 
+    h1 { padding: 30px 0 10px; margin: 0; }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0 0 10px;
+      padding: 0 12px;
+    }
+
+    .nav a {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #1a2b6a;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .nav a:hover { background: #2d44a3; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+      -webkit-touch-callout: none;
+      cursor: zoom-in;
+    }
+
+    .gallery img:hover { transform: scale(1.03); }
+
+    @media (max-width: 520px) {
+      .gallery img { height: 180px; }
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,0.78);
+      padding: 14px;
+      z-index: 9999;
+    }
+    .lightbox.open { display: grid; }
+
+    .lightbox img {
+      max-width: min(1100px, 96vw);
+      max-height: 88vh;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+      cursor: zoom-out;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .lb-close {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(20,20,30,0.65);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
@@ -82,63 +108,100 @@
     <a href="kuala-lumpur.html">Kuala Lumpur</a>
   </div>
 
-  <div class="gallery">
-    <img src="images/singapore/20260111_210614_result.jpg">
-    <img src="images/singapore/20260111_215402_result.jpg">
-    <img src="images/singapore/20260111_215439_result.jpg">
-    <img src="images/singapore/20260111_215559_result.jpg">
-
-    <img src="images/singapore/20260112_003805_result.jpg">
-    <img src="images/singapore/20260112_214323_result.jpg">
-    <img src="images/singapore/20260112_214605_result.jpg">
-
-    <img src="images/singapore/20260113_101420_result.jpg">
-    <img src="images/singapore/20260113_110146_result.jpg">
-    <img src="images/singapore/20260113_112552_result.jpg">
-    <img src="images/singapore/20260113_113914_result.jpg">
-    <img src="images/singapore/20260113_120041_result.jpg">
-    <img src="images/singapore/20260113_122127_result.jpg">
-    <img src="images/singapore/20260113_122831_result.jpg">
-    <img src="images/singapore/20260113_131621_result.jpg">
-    <img src="images/singapore/20260113_131806_result.jpg">
-    <img src="images/singapore/20260113_184708_result.jpg">
-    <img src="images/singapore/20260113_190643_result.jpg">
-    <img src="images/singapore/20260113_190724_result.jpg">
-    <img src="images/singapore/20260113_190857_result.jpg">
-    <img src="images/singapore/20260113_193727_result.jpg">
-    <img src="images/singapore/20260113_193909_result.jpg">
-    <img src="images/singapore/20260113_195428_result.jpg">
-    <img src="images/singapore/20260113_202012_result.jpg">
-    <img src="images/singapore/20260113_233537_result.jpg">
-
-    <img src="images/singapore/20260114_124444_result.jpg">
-    <img src="images/singapore/20260114_134930_result.jpg">
-    <img src="images/singapore/20260114_135116_result.jpg">
-    <img src="images/singapore/20260114_135626_result.jpg">
-    <img src="images/singapore/20260114_135655_result.jpg">
-    <img src="images/singapore/20260114_141309_result.jpg">
-    <img src="images/singapore/20260114_143519_result.jpg">
-    <img src="images/singapore/20260114_145012_result.jpg">
-    <img src="images/singapore/20260114_145646_result.jpg">
-    <img src="images/singapore/20260114_145713_result.jpg">
-    <img src="images/singapore/20260114_145742_result.jpg">
-    <img src="images/singapore/20260114_145951_result.jpg">
-    <img src="images/singapore/20260114_150007_result.jpg">
-    <img src="images/singapore/20260114_152134_result.jpg">
-    <img src="images/singapore/20260114_202557_result.jpg">
-    <img src="images/singapore/20260114_204456_result.jpg">
-    <img src="images/singapore/20260114_205739_result.jpg">
-    <img src="images/singapore/20260114_210030_result.jpg">
-    <img src="images/singapore/20260114_214317_result.jpg">
-    <img src="images/singapore/20260114_215511_result.jpg">
-    <img src="images/singapore/20260114_223333_result.jpg">
-    <img src="images/singapore/20260114_224858_result.jpg">
-    <img src="images/singapore/20260114_225818_result.jpg">
-    <img src="images/singapore/20260114_225822_result.jpg">
-    <img src="images/singapore/20260114_230155_result.jpg">
-
-    <img src="images/singapore/20260115_085452_result.jpg">
+  <div class="gallery" id="gallery">
+    <img src="images/singapore/20260111_210614_result.jpg" alt="">
+    <img src="images/singapore/20260111_215402_result.jpg" alt="">
+    <img src="images/singapore/20260111_215439_result.jpg" alt="">
+    <img src="images/singapore/20260111_215559_result.jpg" alt="">
+    <img src="images/singapore/20260112_003805_result.jpg" alt="">
+    <img src="images/singapore/20260112_214323_result.jpg" alt="">
+    <img src="images/singapore/20260112_214605_result.jpg" alt="">
+    <img src="images/singapore/20260113_101420_result.jpg" alt="">
+    <img src="images/singapore/20260113_110146_result.jpg" alt="">
+    <img src="images/singapore/20260113_112552_result.jpg" alt="">
+    <img src="images/singapore/20260113_113914_result.jpg" alt="">
+    <img src="images/singapore/20260113_120041_result.jpg" alt="">
+    <img src="images/singapore/20260113_122127_result.jpg" alt="">
+    <img src="images/singapore/20260113_122831_result.jpg" alt="">
+    <img src="images/singapore/20260113_131621_result.jpg" alt="">
+    <img src="images/singapore/20260113_131806_result.jpg" alt="">
+    <img src="images/singapore/20260113_184708_result.jpg" alt="">
+    <img src="images/singapore/20260113_190643_result.jpg" alt="">
+    <img src="images/singapore/20260113_190724_result.jpg" alt="">
+    <img src="images/singapore/20260113_190857_result.jpg" alt="">
+    <img src="images/singapore/20260113_193727_result.jpg" alt="">
+    <img src="images/singapore/20260113_193909_result.jpg" alt="">
+    <img src="images/singapore/20260113_195428_result.jpg" alt="">
+    <img src="images/singapore/20260113_202012_result.jpg" alt="">
+    <img src="images/singapore/20260113_233537_result.jpg" alt="">
+    <img src="images/singapore/20260114_124444_result.jpg" alt="">
+    <img src="images/singapore/20260114_134930_result.jpg" alt="">
+    <img src="images/singapore/20260114_135116_result.jpg" alt="">
+    <img src="images/singapore/20260114_135626_result.jpg" alt="">
+    <img src="images/singapore/20260114_135655_result.jpg" alt="">
+    <img src="images/singapore/20260114_141309_result.jpg" alt="">
+    <img src="images/singapore/20260114_143519_result.jpg" alt="">
+    <img src="images/singapore/20260114_145012_result.jpg" alt="">
+    <img src="images/singapore/20260114_145646_result.jpg" alt="">
+    <img src="images/singapore/20260114_145713_result.jpg" alt="">
+    <img src="images/singapore/20260114_145742_result.jpg" alt="">
+    <img src="images/singapore/20260114_145951_result.jpg" alt="">
+    <img src="images/singapore/20260114_150007_result.jpg" alt="">
+    <img src="images/singapore/20260114_152134_result.jpg" alt="">
+    <img src="images/singapore/20260114_202557_result.jpg" alt="">
+    <img src="images/singapore/20260114_204456_result.jpg" alt="">
+    <img src="images/singapore/20260114_205739_result.jpg" alt="">
+    <img src="images/singapore/20260114_210030_result.jpg" alt="">
+    <img src="images/singapore/20260114_214317_result.jpg" alt="">
+    <img src="images/singapore/20260114_215511_result.jpg" alt="">
+    <img src="images/singapore/20260114_223333_result.jpg" alt="">
+    <img src="images/singapore/20260114_224858_result.jpg" alt="">
+    <img src="images/singapore/20260114_225818_result.jpg" alt="">
+    <img src="images/singapore/20260114_225822_result.jpg" alt="">
+    <img src="images/singapore/20260114_230155_result.jpg" alt="">
+    <img src="images/singapore/20260115_085452_result.jpg" alt="">
   </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Închide">✕</button>
+    <img id="lbImg" alt="">
+  </div>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    function openLb(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLb() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+    }
+
+    gallery.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+      openLb(img.src, img.alt);
+    });
+
+    lbClose.addEventListener('click', closeLb);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLb();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLb();
+    });
+  </script>
 
 </body>
 </html>
