@@ -1,52 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <title>Excursie Singapore & Malaysia</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #0b1020;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 40px;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Excursie Singapore • Langkawi • Kuala Lumpur</title>
 
-        h1 {
-            font-size: 36px;
-        }
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-        .buttons {
-            margin-top: 40px;
-        }
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#0b1020;
+      color:#fff;
+      text-align:center;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    h1{margin:10px 0 6px;font-size: clamp(26px, 4vw, 44px)}
+    .sub{margin:0 0 14px;color:#a8b0c7}
 
-        a {
-            display: inline-block;
-            margin: 15px;
-            padding: 15px 25px;
-            background: #1a2b6a;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 18px;
-        }
+    .nav{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin: 14px 0 18px;
+      padding: 0 12px;
+    }
+    .nav a{
+      display:inline-block;
+      padding:10px 16px;
+      background:#1a2b6a;
+      color:#fff;
+      text-decoration:none;
+      border-radius:10px;
+      font-size:16px;
+    }
+    .nav a:hover{background:#2d44a3}
 
-        a:hover {
-            background: #2d44a3;
-        }
-    </style>
+    .card{
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      text-align:left;
+    }
+
+    #map{
+      height: 420px;
+      border-radius: 14px;
+      overflow:hidden;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 520px){
+      #map{height: 340px;}
+    }
+  </style>
 </head>
 <body>
-
+  <div class="wrap">
     <h1>Excursie Singapore • Langkawi • Kuala Lumpur</h1>
+    <p class="sub">Galerii foto + hartă cu locurile principale</p>
 
-    <div class="buttons">
-        <a href="singapore.html">Singapore</a>
-        <a href="langkawi.html">Langkawi</a>
-        <a href="kuala-lumpur.html">Kuala Lumpur</a>
+    <div class="nav">
+      <a href="singapore.html">Singapore</a>
+      <a href="langkawi.html">Langkawi</a>
+      <a href="kuala-lumpur.html">Kuala Lumpur</a>
     </div>
 
+    <div class="card">
+      <strong>Hartă</strong>
+      <div id="map"></div>
+      <p class="sub" style="margin-top:10px;">
+        Tip: apasă pe markere pentru detalii și link către galerie.
+      </p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Centru aproximativ între cele 3 zone
+    const map = L.map('map', { scrollWheelZoom: false }).setView([3.2, 102.3], 6);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    const places = [
+      // Singapore
+      { name: "Marina Bay Sands", lat: 1.2834, lon: 103.8607, page: "singapore.html" },
+      { name: "Gardens by the Bay", lat: 1.2816, lon: 103.8636, page: "singapore.html" },
+      { name: "Sentosa", lat: 1.2494, lon: 103.8303, page: "singapore.html" },
+
+      // Langkawi
+      { name: "Pantai Cenang", lat: 6.2939, lon: 99.7319, page: "langkawi.html" },
+      { name: "Langkawi Sky Bridge", lat: 6.3816, lon: 99.6716, page: "langkawi.html" },
+
+      // Kuala Lumpur
+      { name: "Petronas Towers", lat: 3.1579, lon: 101.7123, page: "kuala-lumpur.html" },
+      { name: "Batu Caves", lat: 3.2379, lon: 101.6840, page: "kuala-lumpur.html" },
+    ];
+
+    places.forEach(p => {
+      const html = `<strong>${p.name}</strong><br><a href="${p.page}">Deschide galeria</a>`;
+      L.marker([p.lat, p.lon]).addTo(map).bindPopup(html);
+    });
+  </script>
 </body>
 </html>
