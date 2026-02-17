@@ -1,0 +1,1 @@
+# poze-excursie-singapore-malayezia
