@@ -176,6 +176,11 @@ const traveler = L.circleMarker(route[0], {
   opacity: 0.9,
   fillOpacity: 1
 }).addTo(map);
+// La încărcare: arată toate destinațiile (zoom mai mic + centrare corectă)
+setTimeout(() => {
+  map.invalidateSize();
+  map.fitBounds(routeLine.getBounds().pad(0.25));
+}, 300);
 
 // ajutor: interpolare între 2 puncte
 function lerp(a, b, t){ return a + (b - a) * t; }
