@@ -154,6 +154,68 @@
         .bindPopup(`<strong>${p.name}</strong><br><a href="${p.page}">Deschide galeria</a>`);
       boundsByName[p.name] = L.latLngBounds([[p.lat, p.lon]]);
     });
+// === ROUTE: Bangkok -> Patong -> Langkawi -> Kuala Lumpur -> Singapore ===
+const routeOrder = ["Bangkok", "Patong", "Langkawi", "Kuala Lumpur", "Singapore"];
+
+// ia coordonatele în ordinea de mai sus (din places)
+const route = routeOrder
+  .map(name => places.find(p => p.name === name))
+  .filter(Boolean)
+  .map(p => [p.lat, p.lon]);
+
+// linia traseului (subtle)
+const routeLine = L.polyline(route, {
+  weight: 4,
+  opacity: 0.55
+}).addTo(map);
+
+// un cerc mic care "merge" pe traseu
+const traveler = L.circleMarker(route[0], {
+  radius: 6,
+  weight: 2,
+  opacity: 0.9,
+  fillOpacity: 1
+}).addTo(map);
+
+// ajutor: interpolare între 2 puncte
+function lerp(a, b, t){ return a + (b - a) * t; }
+
+let seg = 0;         // segment index
+let t = 0;           // 0..1 pe segment
+const speed = 0.008; // mai mare = mai rapid
+
+function animateRoute(){
+  if(route.length < 2) return;
+
+  const a = route[seg];
+  const b = route[seg + 1];
+
+  // poziție curentă
+  const lat = lerp(a[0], b[0], t);
+  const lon = lerp(a[1], b[1], t);
+  traveler.setLatLng([lat, lon]);
+
+  // avansează
+  t += speed;
+
+  if(t >= 1){
+    t = 0;
+    seg += 1;
+    if(seg >= route.length - 1){
+      seg = 0; // loop
+    }
+  }
+
+  requestAnimationFrame(animateRoute);
+}
+
+// pornește animația după ce se încarcă tile-urile (mai smooth pe mobil)
+setTimeout(animateRoute, 600);
+
+// buton bonus: tap pe linie -> zoom pe tot traseul
+routeLine.on('click', () => {
+  map.fitBounds(routeLine.getBounds().pad(0.25));
+});
 
     function zoomTo(name){
       if(boundsByName[name]){
