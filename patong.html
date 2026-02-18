@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Patong</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      text-align: center;
+    }
+
+    h1 { padding: 30px 0 10px; margin: 0; }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0 0 10px;
+      padding: 0 12px;
+    }
+
+    .nav a {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #1a2b6a;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .nav a:hover { background: #2d44a3; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+      -webkit-touch-callout: none;
+      cursor: zoom-in;
+    }
+
+    .gallery img:hover { transform: scale(1.03); }
+
+    @media (max-width: 520px) {
+      .gallery img { height: 180px; }
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(0,0,0,0.78);
+      padding: 14px;
+      z-index: 9999;
+    }
+    .lightbox.open { display: grid; }
+
+    .lightbox img {
+      max-width: min(1100px, 96vw);
+      max-height: 88vh;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+      cursor: zoom-out;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .lb-close {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(20,20,30,0.65);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Patong</h1>
+
+  <div class="nav">
+    <a href="index.html">← Home</a>
+    <a href="singapore.html">Singapore</a>
+    <a href="langkawi.html">Langkawi</a>
+    <a href="kuala-lumpur.html">Kuala Lumpur</a>
+    <a href="bangkok.html">Bangkok</a>
+    <a href="patong.html">Patong</a>
+  </div>
+
+  <div class="gallery" id="gallery">
+
+    <img src="images/patong/20240115_195102_result.jpg" alt="">
+    <img src="images/patong/20240115_201039_result.jpg" alt="">
+    <img src="images/patong/20240115_221356_result.jpg" alt="">
+
+    <img src="images/patong/20240116_093515_result.jpg" alt="">
+    <img src="images/patong/20240116_203932_result.jpg" alt="">
+    <img src="images/patong/20240116_213306_result.jpg" alt="">
+    <img src="images/patong/20240116_213317_result.jpg" alt="">
+    <img src="images/patong/20240116_213625_result.jpg" alt="">
+    <img src="images/patong/20240116_213829_result.jpg" alt="">
+    <img src="images/patong/20240116_220647_result.jpg" alt="">
+
+    <img src="images/patong/20240117_103213_result.jpg" alt="">
+    <img src="images/patong/20240117_104053_result.jpg" alt="">
+    <img src="images/patong/20240117_104842_result.jpg" alt="">
+    <img src="images/patong/20240117_110401_result.jpg" alt="">
+    <img src="images/patong/20240117_110602_result.jpg" alt="">
+    <img src="images/patong/20240117_111101_result.jpg" alt="">
+    <img src="images/patong/20240117_111157_result.jpg" alt="">
+    <img src="images/patong/20240117_111317_result.jpg" alt="">
+    <img src="images/patong/20240117_111818_result.jpg" alt="">
+    <img src="images/patong/20240117_112324_result.jpg" alt="">
+    <img src="images/patong/20240117_140409_result.jpg" alt="">
+    <img src="images/patong/20240117_182145_result.jpg" alt="">
+
+    <img src="images/patong/20240118_223547_result.jpg" alt="">
+
+    <img src="images/patong/20240119_115320_result.jpg" alt="">
+    <img src="images/patong/20240119_151534_result.jpg" alt="">
+    <img src="images/patong/20240119_175628_result.jpg" alt="">
+    <img src="images/patong/20240119_182517_result.jpg" alt="">
+    <img src="images/patong/20240119_182751_result.jpg" alt="">
+    <img src="images/patong/20240119_185836_result.jpg" alt="">
+    <img src="images/patong/20240119_232343_result.jpg" alt="">
+    <img src="images/patong/20240119_234524_result.jpg" alt="">
+
+    <img src="images/patong/20240120_004453_result.jpg" alt="">
+    <img src="images/patong/20240120_010835_result.jpg" alt="">
+    <img src="images/patong/20240120_014219_result.jpg" alt="">
+    <img src="images/patong/20240120_152058_result.jpg" alt="">
+    <img src="images/patong/20240120_160057_result.jpg" alt="">
+    <img src="images/patong/20240120_160101_result.jpg" alt="">
+    <img src="images/patong/20240120_160203_result.jpg" alt="">
+    <img src="images/patong/20240120_202414_result.jpg" alt="">
+
+    <img src="images/patong/20240121_074047_result.jpg" alt="">
+    <img src="images/patong/20240121_074540_result.jpg" alt="">
+
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Închide">✕</button>
+    <img id="lbImg" alt="">
+  </div>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    function openLb(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLb() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+    }
+
+    gallery.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+      openLb(img.src, img.alt);
+    });
+
+    lbClose.addEventListener('click', closeLb);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLb();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLb();
+    });
+  </script>
+
+</body>
+</html>
