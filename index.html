@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Excursie Singapore • Langkawi • Kuala Lumpur</title>
+  <title>Excursii Asia</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
@@ -48,7 +48,7 @@
       color:#fff;
       text-decoration:none;
       border-radius:10px;
-      font-size:16px;
+      font-size:15px;
     }
 
     .nav a:hover{
@@ -75,26 +75,25 @@
       #map{height: 340px;}
     }
 
-    /* Butoane mobile pentru zoom */
+    /* Mobile zoom buttons */
     .map-buttons{
       display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap:10px;
+      grid-template-columns: repeat(5, 1fr);
+      gap:8px;
       margin-top:12px;
     }
 
     .map-buttons button{
-      width:100%;
-      padding:12px 10px;
-      border-radius:12px;
+      padding:10px 6px;
+      border-radius:10px;
       border:1px solid rgba(255,255,255,0.16);
       background:#1a2b6a;
       color:white;
-      font-size:15px;
+      font-size:13px;
     }
 
     .map-buttons button:active{
-      transform: scale(0.98);
+      transform: scale(0.96);
       background:#2d44a3;
     }
   </style>
@@ -102,13 +101,15 @@
 <body>
 
   <div class="wrap">
-    <h1>Excursie Singapore • Langkawi • Kuala Lumpur</h1>
+    <h1>Călătorii în Asia</h1>
     <p class="sub">Galerii foto + hartă interactivă</p>
 
     <div class="nav">
       <a href="singapore.html">Singapore</a>
       <a href="langkawi.html">Langkawi</a>
       <a href="kuala-lumpur.html">Kuala Lumpur</a>
+      <a href="bangkok.html">Bangkok</a>
+      <a href="patong.html">Patong</a>
     </div>
 
     <div class="card">
@@ -116,74 +117,49 @@
       <div id="map"></div>
 
       <div class="map-buttons">
-        <button type="button" id="btnSG">Singapore</button>
-        <button type="button" id="btnLK">Langkawi</button>
-        <button type="button" id="btnKL">Kuala Lumpur</button>
+        <button onclick="zoomTo('Singapore')">SG</button>
+        <button onclick="zoomTo('Langkawi')">LK</button>
+        <button onclick="zoomTo('Kuala Lumpur')">KL</button>
+        <button onclick="zoomTo('Bangkok')">BKK</button>
+        <button onclick="zoomTo('Patong')">Patong</button>
       </div>
 
       <p class="sub" style="margin-top:10px;">
-        Apasă pe un buton pentru zoom sau pe un marker pentru galerie.
+        Apasă pe un buton pentru zoom sau pe marker pentru galerie.
       </p>
     </div>
   </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map', { scrollWheelZoom: false }).setView([3.2, 102.3], 6);
+    const map = L.map('map', { scrollWheelZoom: false }).setView([5, 101], 5);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
-    function pin(color) {
-      return L.divIcon({
-        className: '',
-        iconSize: [18, 18],
-        html: `<div style="
-          width:18px;height:18px;border-radius:50%;
-          background:${color};
-          border:2px solid rgba(255,255,255,.9);
-          box-shadow:0 6px 16px rgba(0,0,0,.45);
-        "></div>`
-      });
-    }
-
-    const ICON_SG = pin('#00d0ff');
-    const ICON_LK = pin('#00e676');
-    const ICON_KL = pin('#ffb300');
-
     const places = [
-      { group: "Singapore", name: "Marina Bay Sands", lat: 1.2834, lon: 103.8607, page: "singapore.html", icon: ICON_SG },
-      { group: "Singapore", name: "Gardens by the Bay", lat: 1.2816, lon: 103.8636, page: "singapore.html", icon: ICON_SG },
-
-      { group: "Langkawi", name: "Pantai Cenang", lat: 6.2939, lon: 99.7319, page: "langkawi.html", icon: ICON_LK },
-      { group: "Langkawi", name: "Langkawi Sky Bridge", lat: 6.3816, lon: 99.6716, page: "langkawi.html", icon: ICON_LK },
-
-      { group: "Kuala Lumpur", name: "Petronas Towers", lat: 3.1579, lon: 101.7123, page: "kuala-lumpur.html", icon: ICON_KL }
+      { name: "Singapore", lat: 1.3521, lon: 103.8198, page: "singapore.html" },
+      { name: "Langkawi", lat: 6.3500, lon: 99.8000, page: "langkawi.html" },
+      { name: "Kuala Lumpur", lat: 3.1390, lon: 101.6869, page: "kuala-lumpur.html" },
+      { name: "Bangkok", lat: 13.7563, lon: 100.5018, page: "bangkok.html" },
+      { name: "Patong", lat: 7.8963, lon: 98.2966, page: "patong.html" }
     ];
 
-    const groupBounds = {
-      "Singapore": L.latLngBounds(),
-      "Langkawi": L.latLngBounds(),
-      "Kuala Lumpur": L.latLngBounds()
-    };
+    const boundsByName = {};
 
     places.forEach(p => {
-      const html = `<strong>${p.name}</strong><br><a href="${p.page}">Deschide galeria</a>`;
-      L.marker([p.lat, p.lon], { icon: p.icon }).addTo(map).bindPopup(html);
-      groupBounds[p.group].extend([p.lat, p.lon]);
+      const marker = L.marker([p.lat, p.lon]).addTo(map)
+        .bindPopup(`<strong>${p.name}</strong><br><a href="${p.page}">Deschide galeria</a>`);
+      boundsByName[p.name] = L.latLngBounds([[p.lat, p.lon]]);
     });
 
-    function zoomTo(groupName){
-      const b = groupBounds[groupName];
-      if (!b || !b.isValid()) return;
-      map.fitBounds(b.pad(0.4));
+    function zoomTo(name){
+      if(boundsByName[name]){
+        map.setView(boundsByName[name].getCenter(), 9);
+      }
     }
-
-    document.getElementById('btnSG').addEventListener('click', () => zoomTo('Singapore'));
-    document.getElementById('btnLK').addEventListener('click', () => zoomTo('Langkawi'));
-    document.getElementById('btnKL').addEventListener('click', () => zoomTo('Kuala Lumpur'));
   </script>
 
 </body>
