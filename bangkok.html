@@ -6,247 +6,261 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1020;
-      color: white;
-      text-align: center;
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#0b1020;
+      color:white;
+      text-align:center;
     }
 
-    h1 { padding: 30px 0 10px; margin: 0; }
+    h1{padding:30px 0 10px;margin:0;}
 
-    .nav {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 0 0 10px;
-      padding: 0 12px;
+    .nav{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin:0 0 10px;
+      padding:0 12px;
     }
 
-    .nav a {
-      display: inline-block;
-      padding: 10px 16px;
-      background: #1a2b6a;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-size: 16px;
+    .nav a{
+      padding:10px 16px;
+      background:#1a2b6a;
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+      font-size:15px;
     }
 
-    .nav a:hover { background: #2d44a3; }
+    .nav a:hover{background:#2d44a3;}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
-      padding: 20px;
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:12px;
+      padding:20px;
     }
 
-    .gallery img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      transition: transform 0.2s ease;
-      -webkit-touch-callout: none;
-      cursor: zoom-in;
+    .gallery img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:12px;
+      cursor:zoom-in;
     }
 
-    .gallery img:hover { transform: scale(1.03); }
-
-    @media (max-width: 520px) {
-      .gallery img { height: 180px; }
+    @media (max-width:520px){
+      .gallery img{height:180px;}
     }
 
-    /* Lightbox */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      display: none;
-      place-items: center;
-      background: rgba(0,0,0,0.78);
-      padding: 14px;
-      z-index: 9999;
-    }
-    .lightbox.open { display: grid; }
-
-    .lightbox img {
-      max-width: min(1100px, 96vw);
-      max-height: 88vh;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.55);
-      cursor: zoom-out;
-      background: rgba(255,255,255,0.04);
+    /* LIGHTBOX */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:none;
+      place-items:center;
+      background:rgba(0,0,0,0.85);
+      z-index:9999;
     }
 
-    .lb-close {
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(20,20,30,0.65);
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
+    .lightbox.open{display:grid;}
+
+    .lightbox img{
+      max-width:95vw;
+      max-height:85vh;
+      border-radius:14px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.6);
+      cursor:pointer;
     }
-    /* Lightbox controls */
-.lb-btn{
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(20,20,30,0.65);
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 10000;
-}
-.lb-prev{ left: 12px; }
-.lb-next{ right: 12px; }
 
-@media (max-width: 520px){
-  .lb-btn{ width: 40px; height: 40px; font-size: 20px; }
-}
+    .lb-close{
+      position:fixed;
+      top:12px;
+      right:12px;
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.2);
+      background:rgba(20,20,30,0.7);
+      color:white;
+      font-size:18px;
+      cursor:pointer;
+    }
 
+    .lb-btn{
+      position:fixed;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.2);
+      background:rgba(20,20,30,0.7);
+      color:white;
+      font-size:24px;
+      cursor:pointer;
+    }
+
+    .lb-prev{left:12px;}
+    .lb-next{right:12px;}
   </style>
 </head>
 <body>
 
-  <h1>Bangkok</h1>
+<h1>Bangkok</h1>
 
-  <div class="nav">
-    <a href="index.html">← Home</a>
-    <a href="singapore.html">Singapore</a>
-    <a href="langkawi.html">Langkawi</a>
-    <a href="kuala-lumpur.html">Kuala Lumpur</a>
-    <a href="bangkok.html">Bangkok</a>
-    <a href="patong.html">Patong</a>
-  </div>
+<div class="nav">
+  <a href="index.html">Home</a>
+  <a href="singapore.html">Singapore</a>
+  <a href="langkawi.html">Langkawi</a>
+  <a href="kuala-lumpur.html">Kuala Lumpur</a>
+  <a href="bangkok.html">Bangkok</a>
+  <a href="patong.html">Patong</a>
+</div>
 
-  <div class="gallery" id="gallery">
+<div class="gallery" id="gallery">
 
-    <img src="images/bangkok/20240111_234951_result.jpg" alt="">
-    <img src="images/bangkok/20240111_235034_result.jpg" alt="">
+<!-- POZE -->
+<img src="images/bangkok/20240111_234951_result.jpg">
+<img src="images/bangkok/20240111_235034_result.jpg">
 
-    <img src="images/bangkok/20240112_073525_result.jpg" alt="">
-    <img src="images/bangkok/20240112_082155_result.jpg" alt="">
-    <img src="images/bangkok/20240112_135624_result.jpg" alt="">
-    <img src="images/bangkok/20240112_141033_result.jpg" alt="">
-    <img src="images/bangkok/20240112_145240_result.jpg" alt="">
-    <img src="images/bangkok/20240112_194146_result.jpg" alt="">
-    <img src="images/bangkok/20240112_194355_result.jpg" alt="">
-    <img src="images/bangkok/20240112_194408_result.jpg" alt="">
-    <img src="images/bangkok/20240112_211230_result.jpg" alt="">
-    <img src="images/bangkok/20240112_211518_result.jpg" alt="">
-    <img src="images/bangkok/20240112_212938_result.jpg" alt="">
-    <img src="images/bangkok/20240112_224542_result.jpg" alt="">
+<img src="images/bangkok/20240112_073525_result.jpg">
+<img src="images/bangkok/20240112_082155_result.jpg">
+<img src="images/bangkok/20240112_135624_result.jpg">
+<img src="images/bangkok/20240112_141033_result.jpg">
+<img src="images/bangkok/20240112_145240_result.jpg">
+<img src="images/bangkok/20240112_194146_result.jpg">
+<img src="images/bangkok/20240112_194355_result.jpg">
+<img src="images/bangkok/20240112_194408_result.jpg">
+<img src="images/bangkok/20240112_211230_result.jpg">
+<img src="images/bangkok/20240112_211518_result.jpg">
+<img src="images/bangkok/20240112_212938_result.jpg">
+<img src="images/bangkok/20240112_224542_result.jpg">
 
-    <img src="images/bangkok/20240113_081804_result.jpg" alt="">
-    <img src="images/bangkok/20240113_081837_result.jpg" alt="">
-    <img src="images/bangkok/20240113_081923_result.jpg" alt="">
-    <img src="images/bangkok/20240113_082058_result.jpg" alt="">
-    <img src="images/bangkok/20240113_083040_result.jpg" alt="">
-    <img src="images/bangkok/20240113_083446_result.jpg" alt="">
-    <img src="images/bangkok/20240113_085333_result.jpg" alt="">
-    <img src="images/bangkok/20240113_085513_result.jpg" alt="">
-    <img src="images/bangkok/20240113_090320_result.jpg" alt="">
-    <img src="images/bangkok/20240113_090833_result.jpg" alt="">
-    <img src="images/bangkok/20240113_090849_result.jpg" alt="">
-    <img src="images/bangkok/20240113_092328_result.jpg" alt="">
-    <img src="images/bangkok/20240113_102230_result.jpg" alt="">
-    <img src="images/bangkok/20240113_104202_result.jpg" alt="">
-    <img src="images/bangkok/20240113_110015_result.jpg" alt="">
-    <img src="images/bangkok/20240113_110237_result.jpg" alt="">
-    <img src="images/bangkok/20240113_110528_result.jpg" alt="">
-    <img src="images/bangkok/20240113_110701_result.jpg" alt="">
-    <img src="images/bangkok/20240113_110708_result.jpg" alt="">
-    <img src="images/bangkok/20240113_110814_result.jpg" alt="">
-    <img src="images/bangkok/20240113_120724_result.jpg" alt="">
-    <img src="images/bangkok/20240113_121218_result.jpg" alt="">
-    <img src="images/bangkok/20240113_121347_result.jpg" alt="">
-    <img src="images/bangkok/20240113_121401_result.jpg" alt="">
-    <img src="images/bangkok/20240113_130820_result.jpg" alt="">
-    <img src="images/bangkok/20240113_152812_result.jpg" alt="">
-    <img src="images/bangkok/20240113_152941_result.jpg" alt="">
-    <img src="images/bangkok/20240113_152953_result.jpg" alt="">
-    <img src="images/bangkok/20240113_153858_result.jpg" alt="">
-    <img src="images/bangkok/20240113_153929_result.jpg" alt="">
-    <img src="images/bangkok/20240113_155616_result.jpg" alt="">
-    <img src="images/bangkok/20240113_160500_result.jpg" alt="">
-    <img src="images/bangkok/20240113_162314_result.jpg" alt="">
-    <img src="images/bangkok/20240113_180237_result.jpg" alt="">
-    <img src="images/bangkok/20240113_182736_result.jpg" alt="">
-    <img src="images/bangkok/20240113_183545_result.jpg" alt="">
-    <img src="images/bangkok/20240113_183811_result.jpg" alt="">
-    <img src="images/bangkok/20240113_203430_result.jpg" alt="">
-    <img src="images/bangkok/20240113_203450_result.jpg" alt="">
+<img src="images/bangkok/20240113_081804_result.jpg">
+<img src="images/bangkok/20240113_081837_result.jpg">
+<img src="images/bangkok/20240113_081923_result.jpg">
+<img src="images/bangkok/20240113_082058_result.jpg">
+<img src="images/bangkok/20240113_083040_result.jpg">
+<img src="images/bangkok/20240113_083446_result.jpg">
+<img src="images/bangkok/20240113_085333_result.jpg">
+<img src="images/bangkok/20240113_085513_result.jpg">
+<img src="images/bangkok/20240113_090320_result.jpg">
+<img src="images/bangkok/20240113_090833_result.jpg">
+<img src="images/bangkok/20240113_090849_result.jpg">
+<img src="images/bangkok/20240113_092328_result.jpg">
+<img src="images/bangkok/20240113_102230_result.jpg">
+<img src="images/bangkok/20240113_104202_result.jpg">
+<img src="images/bangkok/20240113_110015_result.jpg">
+<img src="images/bangkok/20240113_110237_result.jpg">
+<img src="images/bangkok/20240113_110528_result.jpg">
+<img src="images/bangkok/20240113_110701_result.jpg">
+<img src="images/bangkok/20240113_110708_result.jpg">
+<img src="images/bangkok/20240113_110814_result.jpg">
+<img src="images/bangkok/20240113_120724_result.jpg">
+<img src="images/bangkok/20240113_121218_result.jpg">
+<img src="images/bangkok/20240113_121347_result.jpg">
+<img src="images/bangkok/20240113_121401_result.jpg">
+<img src="images/bangkok/20240113_130820_result.jpg">
+<img src="images/bangkok/20240113_152812_result.jpg">
+<img src="images/bangkok/20240113_152941_result.jpg">
+<img src="images/bangkok/20240113_152953_result.jpg">
+<img src="images/bangkok/20240113_153858_result.jpg">
+<img src="images/bangkok/20240113_153929_result.jpg">
+<img src="images/bangkok/20240113_155616_result.jpg">
+<img src="images/bangkok/20240113_160500_result.jpg">
+<img src="images/bangkok/20240113_162314_result.jpg">
+<img src="images/bangkok/20240113_180237_result.jpg">
+<img src="images/bangkok/20240113_182736_result.jpg">
+<img src="images/bangkok/20240113_183545_result.jpg">
+<img src="images/bangkok/20240113_183811_result.jpg">
+<img src="images/bangkok/20240113_203430_result.jpg">
+<img src="images/bangkok/20240113_203450_result.jpg">
 
-    <img src="images/bangkok/20240114_162458_result.jpg" alt="">
-    <img src="images/bangkok/20240114_162531_result.jpg" alt="">
-    <img src="images/bangkok/20240114_174838_result.jpg" alt="">
-    <img src="images/bangkok/20240114_174944_result.jpg" alt="">
-    <img src="images/bangkok/20240114_175043_result.jpg" alt="">
-    <img src="images/bangkok/20240114_184511_result.jpg" alt="">
-    <img src="images/bangkok/20240114_190441_result.jpg" alt="">
-    <img src="images/bangkok/20240114_193531_result.jpg" alt="">
-    <img src="images/bangkok/20240114_193544_result.jpg" alt="">
-    <img src="images/bangkok/20240114_193717_result.jpg" alt="">
-    <img src="images/bangkok/20240114_194122_result.jpg" alt="">
-    <img src="images/bangkok/20240114_194219_result.jpg" alt="">
+<img src="images/bangkok/20240114_162458_result.jpg">
+<img src="images/bangkok/20240114_162531_result.jpg">
+<img src="images/bangkok/20240114_174838_result.jpg">
+<img src="images/bangkok/20240114_174944_result.jpg">
+<img src="images/bangkok/20240114_175043_result.jpg">
+<img src="images/bangkok/20240114_184511_result.jpg">
+<img src="images/bangkok/20240114_190441_result.jpg">
+<img src="images/bangkok/20240114_193531_result.jpg">
+<img src="images/bangkok/20240114_193544_result.jpg">
+<img src="images/bangkok/20240114_193717_result.jpg">
+<img src="images/bangkok/20240114_194122_result.jpg">
+<img src="images/bangkok/20240114_194219_result.jpg">
 
-    <img src="images/bangkok/20240115_103533_result.jpg" alt="">
+<img src="images/bangkok/20240115_103533_result.jpg">
 
-  </div>
+</div>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lb-close" id="lbClose" aria-label="Închide">✕</button>
-    <img id="lbImg" alt="">
-  </div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev">‹</button>
+  <button class="lb-btn lb-next" id="lbNext">›</button>
+  <img id="lbImg">
+</div>
 
-  <script>
-    const gallery = document.getElementById('gallery');
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbClose = document.getElementById('lbClose');
+<script>
+const gallery = document.getElementById('gallery');
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbClose = document.getElementById('lbClose');
+const lbPrev = document.getElementById('lbPrev');
+const lbNext = document.getElementById('lbNext');
 
-    function openLb(src, alt) {
-      lbImg.src = src;
-      lbImg.alt = alt || '';
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
-    }
+const imgs = Array.from(gallery.querySelectorAll('img'));
+let currentIndex = -1;
 
-    function closeLb() {
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      lbImg.src = '';
-    }
+function openAt(index){
+  currentIndex = (index + imgs.length) % imgs.length;
+  lbImg.src = imgs[currentIndex].src;
+  lightbox.classList.add('open');
+}
 
-    gallery.addEventListener('click', (e) => {
-      const img = e.target.closest('img');
-      if (!img) return;
-      openLb(img.src, img.alt);
-    });
+function closeLb(){
+  lightbox.classList.remove('open');
+  lbImg.src = "";
+}
 
-    lbClose.addEventListener('click', closeLb);
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLb();
-    });
+function next(){ openAt(currentIndex + 1); }
+function prev(){ openAt(currentIndex - 1); }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLb();
-    });
-  </script>
+gallery.addEventListener('click', e=>{
+  const img = e.target.closest('img');
+  if(!img) return;
+  openAt(imgs.indexOf(img));
+});
+
+lbClose.onclick = closeLb;
+lbNext.onclick = e=>{ e.stopPropagation(); next(); };
+lbPrev.onclick = e=>{ e.stopPropagation(); prev(); };
+
+document.addEventListener('keydown', e=>{
+  if(!lightbox.classList.contains('open')) return;
+  if(e.key==="Escape") closeLb();
+  if(e.key==="ArrowRight") next();
+  if(e.key==="ArrowLeft") prev();
+});
+
+/* SWIPE */
+let startX = null;
+
+lbImg.addEventListener('touchstart', e=>{
+  startX = e.changedTouches[0].clientX;
+},{passive:true});
+
+lbImg.addEventListener('touchend', e=>{
+  if(startX===null) return;
+  const dx = e.changedTouches[0].clientX - startX;
+  if(dx < -50) next();
+  if(dx > 50) prev();
+  startX = null;
+},{passive:true});
+</script>
 
 </body>
 </html>
